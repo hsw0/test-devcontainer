@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.20.0@sha256:26147acbda4f14c5add9946e2fd2ed543fc402884fd75146bd342a7f6271dc1d
+# syntax=docker/dockerfile:1.22.0@sha256:4a43a54dd1fedceb30ba47e76cfcf2b47304f4161c0caeac2db1c61804ea3c91
 # Syntax: https://github.com/moby/buildkit/blob/v0.25/frontend/dockerfile/docs/reference.md
 
 FROM docker.io/almalinux/10-toolbox:10.1-20260129@sha256:204d8dde5b69e09a4f9fa66e5cc8e3d71ed48eb64dcbcaea3768a56bc8671cd7 AS downloader
