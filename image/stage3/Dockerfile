@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.20.0@sha256:26147acbda4f14c5add9946e2fd2ed543fc402884fd75146bd342a7f6271dc1d
+# syntax=docker/dockerfile:1.22.0@sha256:4a43a54dd1fedceb30ba47e76cfcf2b47304f4161c0caeac2db1c61804ea3c91
 
 FROM docker.io/almalinux/10-toolbox:10.1-20260129@sha256:204d8dde5b69e09a4f9fa66e5cc8e3d71ed48eb64dcbcaea3768a56bc8671cd7 AS toolbox
 
@@ -39,13 +39,13 @@ FROM toolbox AS download-uv
 RUN --mount=type=cache,id=download-uv,target=/var/cache/download <<RUNEOF
 set -eux -o pipefail
 
-uv_version='0.9.28'
-uv_release_ts='2026-01-29T20:19:18Z'
+uv_version='0.10.9'
+uv_release_ts='2026-03-06T21:24:15Z'
 
 arch=$(rpm --eval '%{_arch}')
 case $arch in
-  x86_64) rust_arch='x86_64-unknown-linux-gnu' ; uv_sha256='66ad1822dd9cf96694b95c24f25bc05cff417a65351464da01682a91796d1f2b' ;;
-  aarch64) rust_arch='aarch64-unknown-linux-gnu' ; uv_sha256='382c342735ff29f8ba4574d88e39bca798bcbac50bff6742710ca9cd8143e7d2' ;;
+  x86_64) rust_arch='x86_64-unknown-linux-gnu' ; uv_sha256='20d79708222611fa540b5c9ed84f352bcd3937740e51aacc0f8b15b271c57594' ;;
+  aarch64) rust_arch='aarch64-unknown-linux-gnu' ; uv_sha256='cc0c5a8573e7d6d78aecb954e0a62b5c0d18217bb81f1e19363b428c57a9962a' ;;
   *) echo "Unsupported architecture: $arch" >&2 ; exit 1 ;;
 esac
 
@@ -73,13 +73,13 @@ FROM toolbox AS download-sccache
 RUN --mount=type=cache,id=download-sccache,target=/var/cache/download <<RUNEOF
 set -eux -o pipefail
 
-sccache_version='0.13.0'
-sccache_release_ts='2026-01-13T19:16:21Z'
+sccache_version='0.14.0'
+sccache_release_ts='2026-02-09T15:22:39Z'
 
 arch=$(rpm --eval '%{_arch}')
 case $arch in
-  x86_64) rust_arch='x86_64-unknown-linux-musl' ; sccache_sha256='0f57d80d0036967bc06b8391dcf4b527a6837187de454b55222ce4e0d5e19d0a' ;;
-  aarch64) rust_arch='aarch64-unknown-linux-musl' ; sccache_sha256='1bbbd570aa957db85c1e7c3fbc790f7766d4406347371b884515ed723ac03086' ;;
+  x86_64) rust_arch='x86_64-unknown-linux-musl' ; sccache_sha256='8424b38cda4ecce616a1557d81328f3d7c96503a171eab79942fad618b42af44' ;;
+  aarch64) rust_arch='aarch64-unknown-linux-musl' ; sccache_sha256='62a6c942c47c93333bc0174704800cef7edfa0416d08e1356c1d3e39f0b462f2' ;;
   *) echo "Unsupported architecture: $arch" >&2 ; exit 1 ;;
 esac
 
